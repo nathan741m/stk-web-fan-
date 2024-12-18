@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survive the Killer</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+        header {
+            background: linear-gradient(90deg, #e50914, #b20710);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        nav {
+            text-align: center;
+            background-color: #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #e50914;
+        }
+        .container {
+            padding: 20px;
+        }
+        .game-info, .tips, .community, .announcements {
+            margin-bottom: 50px;
+        }
+        h2 {
+            color: #e50914;
+            border-bottom: 2px solid #e50914;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: #292929;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #292929;
+            text-align: center;
+            padding: 20px;
+            color: #bbb;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #e50914;
+            text-decoration: none;
+        }
+        .login-form {
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #292929;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .login-form input {
+            margin: 10px 0;
+            padding: 15px;
+            width: calc(100% - 30px);
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #f1f1f1;
+        }
+        .login-form button {
+            padding: 15px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s ease;
+        }
+        .login-form button:hover {
+            background-color: #b20710;
+        }
+        .announcements textarea {
+            width: calc(100% - 30px);
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #f1f1f1;
+        }
+        .announcements button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+        .announcements button:hover {
+            background-color: #b20710;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Survive the Killer</h1>
+        <p>Your ultimate guide to escaping the killer and thriving in the game!</p>
+    </header>
+    <nav>
+        <a href="#game-info">Game Info</a>
+        <a href="#tips">Tips & Tricks</a>
+        <a href="#community">Community</a>
+        <a href="#announcements">Announcements</a>
+    </nav>
+    <div class="container">
+        <section id="game-info" class="game-info">
+            <h2>About the Game</h2>
+            <p>Survive the Killer is a thrilling multiplayer game where you either play as the killer or a survivor. As a survivor, your goal is to escape before the killer gets you. As the killer, your job is to eliminate the survivors before they escape!</p>
+        </section>
+        <section id="tips" class="tips">
+            <h2>Tips & Tricks</h2>
+            <ul>
+                <li><strong>As a survivor:</strong> Stick with teammates and look for exits early.</li>
+                <li><strong>As the killer:</strong> Use the element of surprise and block exits strategically.</li>
+                <li>Keep an eye on the clock and always have an escape plan.</li>
+            </ul>
+        </section>
+        <section id="community" class="community">
+            <h2>Join the Community</h2>
+            <p>Connect with other players, share strategies, and stay updated on the latest game updates. Join our <a href="#">Discord</a> and follow us on <a href="#">Twitter</a>!</p>
+        </section>
+        <section id="announcements" class="announcements">
+            <h2>Announcements</h2>
+            <p>Only authorized administrators can post announcements.</p>
+            <form class="login-form" onsubmit="handleAdminLogin(event)">
+                <label for="email">Admin Email:</label>
+                <input type="email" id="email" placeholder="Enter admin email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div id="admin-section" style="display: none; margin-top: 20px;">
+                <h3>Add New Announcement</h3>
+                <textarea id="announcement" rows="4" placeholder="Write your announcement here..."></textarea>
+                <button onclick="addAnnouncement()">Post Announcement</button>
+                <ul id="announcement-list" style="margin-top: 20px;"></ul>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Survive the Killer Fan Site. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        const adminEmail = "silvalolcross09nnn@gmail.com";
+        const adminPassword = "nathan40"; // Replace with a secure method to handle authentication
+
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email === adminEmail && password === adminPassword) {
+                document.querySelector(".login-form").style.display = "none";
+                document.getElementById("admin-section").style.display = "block";
+            } else {
+                alert("Invalid login credentials.");
+            }
+        }
+
+        function addAnnouncement() {
+            const announcement = document.getElementById("announcement").value;
+            if (announcement) {
+                const list = document.getElementById("announcement-list");
+                const listItem = document.createElement("li");
+                listItem.textContent = announcement;
+                list.appendChild(listItem);
+                document.getElementById("announcement").value = "";
+            } else {
+                alert("Please enter an announcement.");
+            }
+        }
+    </script>
+</body>
+</html>
